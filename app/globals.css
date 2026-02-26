@@ -1,13 +1,58 @@
 @import "tailwindcss";
 
- @theme {
+@theme {
   --animate-open-menu: open-menu 0.3s ease-out forwards;
+  
   @keyframes open-menu {
-    0% {
-      transform: scaleY(0);
-    }
-    100% {
-      transform: scaleY(1);
-    }
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
   }
+
+  --animate-scale: scale 0.3s ease-out forwards;
+
+  @keyframes scale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+}
+
+@layer components {
+  .bg-glow-blue   { @apply bg-linear-to-br from-gray-800 via-blue-600 to-gray-800; }
+  .bg-glow-green  { @apply bg-linear-to-br from-gray-800 via-green-600 to-gray-800; }
+  .bg-glow-purple { @apply bg-linear-to-br from-gray-800 via-purple-600 to-gray-800; }
+  .bg-glow-amber  { @apply bg-linear-to-br from-gray-800 via-amber-600 to-gray-800; }
+  .bg-glow-red    { @apply bg-linear-to-br from-gray-800 via-red-600 to-gray-800; }
+  .bg-glow-pink   { @apply bg-linear-to-br from-gray-800 via-pink-600 to-gray-800; }
+  .bg-glow-indigo { @apply bg-linear-to-br from-gray-800 via-indigo-600 to-gray-800; }
+  .bg-glow-cyan   { @apply bg-linear-to-br from-gray-800 via-cyan-600 to-gray-800; }
+
+  .btn-glow-blue   { @apply bg-linear-to-r from-indigo-400 to-cyan-400}
+  .btn-glow-green  { @apply bg-linear-to-r from-teal-400 to-yellow-200}
+  .btn-glow-purple { @apply bg-linear-to-r from-fuchsia-600 to-purple-600}
+  .btn-glow-amber  { @apply bg-linear-to-r from-red-500 to-orange-500; }
+  .btn-glow-red    { @apply bg-linear-to-r from-rose-400 to-red-500}
+  .btn-glow-pink   { @apply bg-linear-to-r from-fuchsia-500 to-pink-500}
+  .btn-glow-indigo { @apply bg-linear-to-r from-violet-600 to-indigo-600}
+  .btn-glow-cyan   { @apply bg-linear-to-r from-cyan-500 to-blue-500 }
+
+  .btn-glow-blue:hover   { @apply bg-linear-to-r from-indigo-800 to-cyan-800}
+  .btn-glow-green:hover  { @apply bg-linear-to-r from-teal-800 to-yellow-800}
+  .btn-glow-purple:hover { @apply bg-linear-to-r from-fuchsia-800 to-purple-800}
+  .btn-glow-amber:hover  { @apply bg-linear-to-r from-red-800 to-orange-800; }
+  .btn-glow-red:hover    { @apply bg-linear-to-r from-rose-800 to-red-800}
+  .btn-glow-pink:hover   { @apply bg-linear-to-r from-fuchsia-800 to-pink-800}
+  .btn-glow-indigo:hover { @apply bg-linear-to-r from-violet-800 to-indigo-800}
+  .btn-glow-cyan:hover   { @apply bg-linear-to-r from-cyan-800 to-blue-800 }
+
+  .bg-glow-blue:hover   { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); }
+  .bg-glow-green:hover  { box-shadow: 0 0 20px rgba(22, 163, 74, 0.5); }
+  .bg-glow-purple:hover { box-shadow: 0 0 20px rgba(147, 51, 234, 0.5); }
+  .bg-glow-amber:hover  { box-shadow: 0 0 20px rgba(217, 119, 6, 0.5); }
+  .bg-glow-red:hover    { box-shadow: 0 0 20px rgba(220, 38, 38, 0.5); }
+  .bg-glow-pink:hover   { box-shadow: 0 0 20px rgba(219, 39, 119, 0.5); }
+  .bg-glow-indigo:hover { box-shadow: 0 0 20px rgba(79, 70, 229, 0.5); }
+  .bg-glow-cyan:hover   { box-shadow: 0 0 20px rgba(8, 145, 178, 0.5); }
+  .bg-glow-gray:hover   { box-shadow: 0 0 20px rgba(156, 163, 175, 0.4); }
+
 }

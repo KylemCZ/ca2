@@ -1,19 +1,21 @@
 import "./globals.css";
 import { asap } from './fonts';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import type { Metadata } from "next";
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: 'Code Club'
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
-      <body className={`${asap.className} antialiased min-h-screen bg-cyan-950 text-gray-300 flex flex-col`}>
-        <Header />
+      <body className={`${asap.className} antialiased min-h-screen bg-slate-900 text-gray-300 flex flex-col`}>
         {children}
-        <Footer />
       </body>
     </html>
   );

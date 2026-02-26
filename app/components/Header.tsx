@@ -5,17 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import MobileLinks from "./MobileLinks";
+import { Technology } from "@/app/lib/definitions";
 
-export default function Header() {
+export default function Header({ technologies }: { technologies: Technology[] }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="lg:fixed lg:h-screen lg:left-0 lg:top-0 flex sticky top-0 bg-cyan-900 border-y-8 lg:border-0 lg:border-r-4 border-solid border-blue-900">
+    <header className="lg:fixed lg:h-screen lg:left-0 lg:top-0 flex sticky top-0 bg-cyan-900 border-y-8 lg:border-0 lg:border-r-4 border-solid border-emerald-400">
       <div className="w-full m-2.5 flex gap-y-2 items-center justify-between lg:flex-col lg:justify-start">
-        <Link href="/">
+        <Link href="/technologies">
           <Image
             src="/code_club_logo.jpg"
             width={50}
@@ -25,13 +26,13 @@ export default function Header() {
           />
         </Link>
         <button onClick={toggleMenu} className="text-3xl md:hidden" aria-label="Open menu">&#9776;</button>
-        <NavLinks />
+        <NavLinks technologies={technologies} />
       </div>
       <section className={`absolute top-0 bg-gray-950 w-full text-5xl flex-col justify-center origin-top
           ${menuOpen ? "flex animate-open-menu" : "hidden"}`}
       >
         <button onClick={closeMenu} className="text-7xl self-end px-6" aria-label="Close menu">&times;</button>
-        <MobileLinks closeMenu={closeMenu} />
+        <MobileLinks closeMenu={closeMenu} technologies={technologies} />
       </section>
     </header>
   );

@@ -64,26 +64,6 @@ export async function fetchProjectsByTech(techId: string) : Promise <Projects[]>
   return projects;
 }
 
-export async function fetchTechById(id: string) : Promise <Technology[]> {
-  const sql = neon(`${process.env.DATABASE_URL}`);
-  const res = await sql`SELECT * FROM technologies WHERE id = ${id}`;
-  
-  if (res.length === 0) {
-    return [];
-  }
-
-const technologies: Technology[] = res.map(
-    (row) => ({
-    id: row.id,
-    description: row.description,
-    image: row.image,
-    bgColor: row.bg_color,
-    buttonColor: row.button_color,
-    sort_order: row.sort_order,
-}));
-return technologies;
-}
-
 export async function addTechnology(formData: FormData) {
   const id = formData.get('id') as string;
   const description = formData.get('description') as string;

@@ -1,10 +1,10 @@
 "use server";
-import { neon } from '@neondatabase/serverless';
 import { Technology } from '@/app/lib/definitions';
 import { Projects } from '@/app/lib/definitions';
+import sql from '@/app/lib/db';
+
 
 export async function fetchAllTechs() : Promise <Technology[]> {
-  const sql = neon(`${process.env.DATABASE_URL}`);
     const res = await sql`SELECT * FROM technologies ORDER BY sort_order`;
     if (res.length === 0) {
         return [];
@@ -23,7 +23,6 @@ return technologies;
 }
 
 export async function fetchAllProjects() : Promise <Projects[]> {
-  const sql = neon(`${process.env.DATABASE_URL}`);
     const res = await sql`  SELECT * FROM projects ORDER BY sort_order`;
   if (res.length === 0) {
     return [];
@@ -42,10 +41,7 @@ export async function fetchAllProjects() : Promise <Projects[]> {
 
 }
 
-
 export async function fetchProjectsByTech(techId: string) : Promise <Projects[]> {
-  const sql = neon(`${process.env.DATABASE_URL}`);
-
   const res = await sql`SELECT * FROM projects WHERE technology_id = ${techId} ORDER BY sort_order`;
   
   if (res.length === 0) {
@@ -71,8 +67,6 @@ export async function addTechnology(formData: FormData) {
   const bgColor = formData.get('bgColor') as string;
   const buttonColor = formData.get('buttonColor') as string;
 
-  const sql = neon(`${process.env.DATABASE_URL}`);
-  
   const capitalizeFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
   
   await sql`
@@ -88,8 +82,6 @@ export async function addProject(formData: FormData) {
   const image = formData.get('image') as string;
   const bgColor = formData.get('bgColor') as string;
   const buttonColor = formData.get('buttonColor') as string;
-
-  const sql = neon(`${process.env.DATABASE_URL}`);
   
   const capitalizeFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
   
